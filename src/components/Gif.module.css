@@ -1,0 +1,11 @@
+.wrapper {
+    border:black;
+    padding: 20px;
+    background-color: red;
+    display: inline-block;
+    vertical-align: center;
+
+}
+.image {
+    height: 500px;
+}
