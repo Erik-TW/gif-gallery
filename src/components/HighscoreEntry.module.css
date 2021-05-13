@@ -1,0 +1,9 @@
+.hsEntry {
+    list-style-position:inside;
+    background-color: #5e60ce;
+    margin: 8px;
+    padding: 20px;
+    box-shadow: 0 0 5px #999;
+    border-radius: 20px;
+    color: white;
+}
