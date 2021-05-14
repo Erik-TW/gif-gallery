@@ -1,9 +1,9 @@
 import classes from './Gif.module.css';
 
 const Gif = (props) => {
-    return(
+    return (
         <div className={classes.wrapper}>
-            <img className={classes.image} src={props.url} onClick={props.onClick} alt="gif"/>
+            <img className={classes.image} src={props.url} alt="gif" />
         </div>
     );
 }
