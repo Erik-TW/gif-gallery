@@ -4,7 +4,7 @@ import Gallery from './components/Gallery';
 import Searcher from './components/Searcher';
 import { Route, useHistory } from "react-router-dom";
 import axios from 'axios';
-import Gif from "./components/Gif";
+import Gif from "./components/GalleryGif";
 
 const apiKey = process.env.REACT_APP_APIKEY;
 const localStorage = window.localStorage;
@@ -63,9 +63,17 @@ const App = () => {
 
   let gifArray = [];
   for(let i = 0; i < gifs.length; i++) {
-    let currentGif = <Gif url = {gifs[i].url} key = {i} title = {gifs[i].title}></Gif>
+    let currentGif = <Gif url = {gifs[i].url} key = {i} title = {gifs[i].title} delGif={() => deleteGifHandler(i)}></Gif>
     gifArray.push(currentGif);
   }
+
+  const deleteGifHandler = (index) => {
+    let tempGifArray = [...gifs];
+    tempGifArray.splice(index, 1);
+    localStorage.setItem('gifs', JSON.stringify(tempGifArray));
+    setGifs(tempGifArray);
+
+  } 
 
   return (
     <div>
