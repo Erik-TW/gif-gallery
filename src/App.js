@@ -1,9 +1,10 @@
 import './App.css';
 import { useState } from 'react';
-import Login from './components/Login';
+import Gallery from './components/Gallery';
 import Searcher from './components/Searcher';
 import { Route, useHistory } from "react-router-dom";
 import axios from 'axios';
+import Gif from "./components/Gif";
 
 const apiKey = process.env.REACT_APP_APIKEY;
 const localStorage = window.localStorage;
@@ -60,13 +61,18 @@ const App = () => {
     }
   }
 
+  let gifArray = [];
+  for(let i = 0; i < gifs.length; i++) {
+    let currentGif = <Gif url = {gifs[i].url} key = {i} title = {gifs[i].title}></Gif>
+    gifArray.push(currentGif);
+  }
 
   return (
     <div>
       <Route
         exact path='/'
         render={(props) => (
-          <Login btnHandler={startBtnHandler} />
+          <Gallery btnHandler={startBtnHandler} gifs={gifArray}/>
         )}
       />
       <Route
