@@ -8,7 +8,9 @@ const Gif = (props) => {
             <div className= {classes.container}>
                 <p>{props.title.length == 0 ? <i>Untitled</i> : props.title}</p>
             </div>
-
+            <div className={classes.deleteBtn}>
+            <button style={{justifyContent: 'end'}} className='btn  btn-danger mb-1'>X</button>
+            </div>
         </div>
     );
 }

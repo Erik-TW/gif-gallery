@@ -1,7 +1,3 @@
-.wrapper {
-    
-
-}
 .image {
   max-width: 100%;
 }
@@ -20,3 +16,20 @@
     padding: 10px 20px;
   }
 
+  .deleteBtn  {
+    text-align: end;
+  }
+
+  @media screen and (max-width: 900px) and (min-width: 601px) {
+    .polaroid {
+      flex: 0 0 40%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+  .polaroid {
+    flex: 0 0 100%;
+  }
+
+
+}
