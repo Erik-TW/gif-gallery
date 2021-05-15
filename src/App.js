@@ -56,14 +56,14 @@ const App = () => {
     let unparsedGifs = localStorage.getItem('gifs');
     console.log(unparsedGifs);
     const parsedGifs = JSON.parse(unparsedGifs);
-    if (parsedGifs) {
+    if (parsedGifs.length > 0) {
       setGifs(parsedGifs);
     }
   }
 
   let gifArray = [];
-  for(let i = 0; i < gifs.length; i++) {
-    let currentGif = <Gif url = {gifs[i].url} key = {i} title = {gifs[i].title} delGif={() => deleteGifHandler(i)}></Gif>
+  for (let i = 0; i < gifs.length; i++) {
+    let currentGif = <Gif url={gifs[i].url} key={i} title={gifs[i].title} delGif={() => deleteGifHandler(i)}></Gif>
     gifArray.push(currentGif);
   }
 
@@ -72,15 +72,14 @@ const App = () => {
     tempGifArray.splice(index, 1);
     localStorage.setItem('gifs', JSON.stringify(tempGifArray));
     setGifs(tempGifArray);
-
-  } 
+  }
 
   return (
     <div>
       <Route
         exact path='/'
         render={(props) => (
-          <Gallery btnHandler={startBtnHandler} gifs={gifArray}/>
+          <Gallery btnHandler={startBtnHandler} gifs={gifArray} />
         )}
       />
       <Route
