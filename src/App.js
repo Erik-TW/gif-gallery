@@ -108,8 +108,10 @@ const App = () => {
     let unparsedGifs = localStorage.getItem('gifs');
     console.log(unparsedGifs);
     const parsedGifs = JSON.parse(unparsedGifs);
-    if (parsedGifs.length > 0) {
-      setGifs(parsedGifs);
+    if (parsedGifs != null) {
+      if (parsedGifs.length > 0) {
+        setGifs(parsedGifs);
+      }
     }
   }
 
