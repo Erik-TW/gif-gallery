@@ -17,6 +17,7 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterQuery, setFilterQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
+  const [trendToggle, setTrendToggle] = useState(false);
 
   const startBtnHandler = () => {
     history.push('/search');
@@ -35,6 +36,10 @@ const App = () => {
 
   const filterQueryHandler = (e) => {
     setFilterQuery(e.target.value);
+  }
+
+  const trendToggleHandler = (e) => {
+    setTrendToggle(e.currentTarget.checked)
   }
 
   const apiSearch = async () => {
@@ -112,9 +117,16 @@ const App = () => {
   let gifArray = [];
   for (let i = 0; i < gifs.length; i++) {
 
-    if (filterQuery.length === 0 || gifs[i].title.includes(filterQuery)) {
-      let currentGif = <GalleryGif url={gifs[i].url} key={i} title={gifs[i].title} delGif={() => deleteGifHandler(i)}></GalleryGif>
-      gifArray.push(currentGif);
+    if (filterQuery.length === 0 || gifs[i].title.toLowerCase().includes(filterQuery.toLowerCase())) {
+      if (trendToggle && gifs[i].trending) {
+        let currentGif = <GalleryGif url={gifs[i].url} key={i} title={gifs[i].title} delGif={() => deleteGifHandler(i)}></GalleryGif>
+        gifArray.push(currentGif);
+      }
+      else if (!trendToggle) {
+        let currentGif = <GalleryGif url={gifs[i].url} key={i} title={gifs[i].title} delGif={() => deleteGifHandler(i)}></GalleryGif>
+        gifArray.push(currentGif);
+      }
+
     }
   }
 
@@ -135,6 +147,7 @@ const App = () => {
         title={index.title}
         rating={index.rating}
         onClick={() => saveClickHandler(index)}
+        key={i}
       />
     )
   }
@@ -150,6 +163,7 @@ const App = () => {
             filterHandler={filterQueryHandler}
             searchButtonHandler={apiSearch}
             filterQuery={filterQuery}
+            trendToggleHandler={trendToggleHandler}
           />
         )}
       />
