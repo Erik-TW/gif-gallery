@@ -1,5 +1,4 @@
-import Gif from './Gif';
-import classes from './Gif.module.css';
+import classes from './GalleryGif.module.css';
 
 const GalleryGif = (props) => {
     return (

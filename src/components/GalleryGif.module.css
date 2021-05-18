@@ -1,0 +1,36 @@
+.image {
+  max-width: 100%;
+}
+
+.polaroid {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 20px;
+    flex: 0 0 25%;
+    float: left;
+    justify-content: center;
+    height:fit-content;
+  }
+  
+.container {
+    text-align: center;
+    padding: 10px 20px;
+  }
+
+  .deleteBtn  {
+    text-align: end;
+  }
+
+@media screen and (max-width: 900px) and (min-width: 601px) {
+    .polaroid {
+      flex: 0 0 40%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+  .polaroid {
+    flex: 0 0 100%;
+  }
+
+
+}

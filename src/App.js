@@ -7,7 +7,6 @@ import axios from 'axios';
 import GalleryGif from "./components/GalleryGif";
 import Gif from "./components/Gif";
 
-
 const apiKey = process.env.REACT_APP_APIKEY;
 const localStorage = window.localStorage;
 
