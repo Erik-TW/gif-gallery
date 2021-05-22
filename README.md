@@ -10,6 +10,8 @@ For the code to work you first need to install all required packages. To do this
 You then need to create a local ENV file in the root folder named .env.local which should contain your individual Giphy API-key the file should contain the following:
 
 REACT_APP_APIKEY=<YOUR_KEY_HERE>
+
+The site can now be started by typing "npm start" in the terminal
 ### Gallery
 The start page is the users gallery. From here the user can filter their saved GIFs by typing into the text field as well as choosing to see only GIFs that have trended.
 Saved GIFs can be removed by clicking on the respective red 'X'.
