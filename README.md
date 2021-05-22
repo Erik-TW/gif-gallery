@@ -16,3 +16,12 @@ The user can navigate to the Gallery page by clicking "Gallery" in the navigatio
 
 
 ## Why React:
+When reasearching frameworks Angular, React and Vue were identified as candidates. When diving deeper we learned that Angular and React are being developed and maintained by big tech players (Google and Facebook) wheras Vue is open source and community driven [1]. With this in mind we decided to focus on Angular and React mainly because being backed by large companies, their support is somewhat guranteed and this further helps the longevity of this project. In combination with the fact that Angular and React both are more popular and widely used than Vue [1] led to us excluding Vue from the list. 
+
+
+
+
+
+[1] - https://academind.com/tutorials/angular-vs-react-vs-vue-my-thoughts/
+
+[2] - https://www.guru99.com/react-vs-angular-key-difference.html#:~:text=KEY%20DIFFERENCE,React%20is%20based%20on%20Javascript.
