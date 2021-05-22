@@ -5,6 +5,7 @@ Gif Gallery is a website that connects to Giphy to allow users to search for spe
 Giphy API: https://developers.giphy.com/docs/api/endpoint/
 
 ## How to use:
+For the code to work you need to create a local ENV file in the root folder named .env.local which should contain your individual Giphy API-key (Format: REACT_APP_APIKEY=<YOUR_KEY_HERE>).
 ### Gallery
 The start page is the users gallery. From here the user can filter their saved GIFs by typing into the text field as well as choosing to see only GIFs that have trended.
 Saved GIFs can be removed by clicking on the respective red 'X'.
