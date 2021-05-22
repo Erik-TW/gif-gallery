@@ -1,0 +1,21 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+/*tablet*/
+@media screen and (max-width: 900px) and (min-width: 601px) {
+  .wrapper {
+    grid-template-columns: 100px auto;
+  }
+}
+
+/*phone*/
+@media screen and (max-width: 600px) {
+  .wrapper {
+    grid-template-columns: 100%;
+  }
+}
+
+
+

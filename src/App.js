@@ -1,4 +1,3 @@
-import './App.css';
 import { useState } from 'react';
 import Gallery from './components/Gallery';
 import Searcher from './components/Searcher';
@@ -7,6 +6,7 @@ import axios from 'axios';
 import GalleryGif from "./components/GalleryGif";
 import Gif from "./components/Gif";
 import Navbar from './components/Navbar';
+import classes from './App.module.css';
 
 const apiKey = process.env.REACT_APP_APIKEY;
 const localStorage = window.localStorage;
@@ -179,7 +179,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className={classes.wrapper}>
       <Navbar searchSelected={navSearch}/>
       <Route
         exact path='/'

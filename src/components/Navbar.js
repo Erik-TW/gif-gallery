@@ -1,14 +1,18 @@
+import classes from './Navbar.module.css';
+
 const Navbar = (props) => {
-    let galleryClass = "nav-item active";
-    let searchClass = "nav-item";
+    let galleryClass = classes.active;
+    let searchClass = "";
     if(props.searchSelected === true) {
-         galleryClass = "nav-item";
-         searchClass = "nav-item active";
+         galleryClass = "";
+         searchClass = classes.active;
+
     }
+
     return(
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <a className="navbar-brand" href="#">Gif Gallery</a>
-  
+    /*<div style={{display: 'flex', flexDirection: 'column'}}>
+    <nav className={`navbar navbar-expand navbar-light bg-light`}>
+    <a className="navbar-brand" href="/">Gif Gallery</a>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className={galleryClass}>
@@ -19,6 +23,13 @@ const Navbar = (props) => {
         </li>
       </ul>
     </div>
+  </nav>
+  </div>*/
+
+  <nav className={classes.topnav}>
+    <a href="/" className={galleryClass}>Gallery</a>
+    <a href="/search" className={searchClass}>Search</a>
+    
   </nav>
     );
 }
