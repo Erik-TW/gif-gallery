@@ -63,7 +63,6 @@ const App = () => {
     axios.get("https://api.giphy.com/v1/gifs/search", headers)
       .then((response) => {
         setSearchResults([])
-        console.log(response)
         let data = response.data.data;
         if (data) {
           let results = []
@@ -96,7 +95,6 @@ const App = () => {
     axios.get("https://api.giphy.com/v1/gifs/random", headers)
       .then((response) => {
         setSearchResults([])
-        console.log(response)
         let data = response.data.data;
         if (data) {
           let results = []
@@ -121,7 +119,6 @@ const App = () => {
 
   if (gifs.length === 0) {
     let unparsedGifs = localStorage.getItem('gifs');
-    console.log(unparsedGifs);
     const parsedGifs = JSON.parse(unparsedGifs);
     if (parsedGifs != null) {
       if (parsedGifs.length > 0) {
@@ -159,9 +156,7 @@ const App = () => {
     let index = searchResults[i];
     let exists = false;
     for(let j = 0; j < gifs.length; j++) {
-      console.log(index.id, gifs[j].id)
       if(index.id === gifs[j].id) {
-        console.log("exists = true")
         exists = true;
       }
     }
