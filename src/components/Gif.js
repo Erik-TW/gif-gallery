@@ -7,7 +7,6 @@ const Gif = (props) => {
         e.target.disabled = true;
         e.target.innerHTML = "Saved!"
     }
-    console.log(props.gifSaved)
     return (
         <div className={classes.polaroid}>
             <img className={classes.image} src={props.url} alt="gif" />
