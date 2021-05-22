@@ -5,7 +5,9 @@ Gif Gallery is a website that connects to Giphy to allow users to search for spe
 Giphy API: https://developers.giphy.com/docs/api/endpoint/
 
 ## How to use:
-For the code to work you need to create a local ENV file in the root folder named .env.local which should contain your individual Giphy API-key the file should contain the following:
+For the code to work you first need to install all required packages. To do this simply write "npm install" in the terminal. 
+
+You then need to create a local ENV file in the root folder named .env.local which should contain your individual Giphy API-key the file should contain the following:
 
 REACT_APP_APIKEY=<YOUR_KEY_HERE>
 ### Gallery
