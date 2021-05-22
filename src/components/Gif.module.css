@@ -18,6 +18,10 @@
       padding: 10px 20px;
     }
 
+  .clicked {
+    color: red;
+  }
+
     @media screen and (max-width: 900px) and (min-width: 601px) {
         .polaroid {
           width: 400px;

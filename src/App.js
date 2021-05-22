@@ -6,6 +6,7 @@ import { Route, useHistory } from "react-router-dom";
 import axios from 'axios';
 import GalleryGif from "./components/GalleryGif";
 import Gif from "./components/Gif";
+import Navbar from './components/Navbar';
 
 const apiKey = process.env.REACT_APP_APIKEY;
 const localStorage = window.localStorage;
@@ -17,6 +18,8 @@ const App = () => {
   const [filterQuery, setFilterQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [trendToggle, setTrendToggle] = useState(false);
+  const [navSearch, setNavGallery] = useState(window.location.href.includes("search"));
+
 
   const startBtnHandler = () => {
     history.push('/search');
@@ -24,9 +27,17 @@ const App = () => {
 
   const saveClickHandler = (obj) => {
     let tempGifs = [...gifs]
-    tempGifs.push({ url: obj.url, title: obj.title, trending: obj.trending })
-    localStorage.setItem('gifs', JSON.stringify(tempGifs))
-    setGifs(tempGifs);
+    let exists = false;
+    for(let i = 0; i < tempGifs.length; i++) {
+      if(tempGifs[i].id === obj.id) {
+        exists = true;
+      }
+    }
+    if(exists === false) {
+      tempGifs.push({id: obj.id, url: obj.url, title: obj.title, trending: obj.trending })
+      localStorage.setItem('gifs', JSON.stringify(tempGifs))
+      setGifs(tempGifs);
+    }
   }
 
   const searchQueryHandler = (e) => {
@@ -58,6 +69,7 @@ const App = () => {
           let results = []
           for (let i = 0; i < data.length; i++) {
             let entry = {
+              id: data[i].id,
               url: data[i].images.original.url,
               title: data[i].title,
               trending: Date.parse(data[i].trending_datetime)
@@ -84,10 +96,12 @@ const App = () => {
     axios.get("https://api.giphy.com/v1/gifs/random", headers)
       .then((response) => {
         setSearchResults([])
+        console.log(response)
         let data = response.data.data;
         if (data) {
           let results = []
           let entry = {
+            id: data.id,
             url: data.image_url,
             title: data.title,
             trending: Date.parse(data.trending_datetime)
@@ -103,6 +117,7 @@ const App = () => {
         console.log(error);
       });
   }
+
 
   if (gifs.length === 0) {
     let unparsedGifs = localStorage.getItem('gifs');
@@ -140,8 +155,17 @@ const App = () => {
 
   let renderedGifs = [];
 
-  for (let i = 0; i < searchResults.length; i++) {
+  for (let i = 0;  i< searchResults.length; i++) {
     let index = searchResults[i];
+    let exists = false;
+    for(let j = 0; j < gifs.length; j++) {
+      console.log(index.id, gifs[j].id)
+      if(index.id === gifs[j].id) {
+        console.log("exists = true")
+        exists = true;
+      }
+    }
+    
     renderedGifs.push(
       <Gif
         url={index.url}
@@ -149,12 +173,14 @@ const App = () => {
         rating={index.rating}
         onClick={() => saveClickHandler(index)}
         key={i}
+        gifSaved={exists}
       />
     )
   }
 
   return (
     <div>
+      <Navbar searchSelected={navSearch}/>
       <Route
         exact path='/'
         render={(props) => (
